@@ -1,7 +1,7 @@
-package com.convertapi.client;
+package io.github.kmozsi.convertapi;
 
-import com.convertapi.client.model.ConversionResponse;
-import com.convertapi.client.model.ConversionResponseFile;
+import io.github.kmozsi.convertapi.model.ConversionResponse;
+import io.github.kmozsi.convertapi.model.ConversionResponseFile;
 
 import java.nio.file.Files;
 import java.nio.file.Path;

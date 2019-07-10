@@ -1,4 +1,4 @@
-package com.convertapi.client;
+package io.github.kmozsi.convertapi;
 
 import okhttp3.MediaType;
 import okhttp3.Request;

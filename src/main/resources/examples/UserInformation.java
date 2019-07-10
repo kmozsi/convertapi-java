@@ -1,8 +1,8 @@
-package com.convertapi.examples;
+package io.github.kmozsi.convertapi.examples;
 
-import com.convertapi.Config;
-import com.convertapi.ConvertApi;
-import com.convertapi.client.model.User;
+import io.github.kmozsi.convertapi.Config;
+import io.github.kmozsi.convertapi.ConvertApi;
+import io.github.kmozsi.convertapi.model.User;
 
 import java.io.IOException;
 import java.util.concurrent.ExecutionException;

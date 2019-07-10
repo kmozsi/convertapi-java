@@ -1,4 +1,4 @@
-package com.convertapi.client.model;
+package io.github.kmozsi.convertapi.model;
 
 @SuppressWarnings("CanBeFinal")
 public class ConversionResponse {

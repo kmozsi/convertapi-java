@@ -1,6 +1,6 @@
-package com.convertapi.client;
+package io.github.kmozsi.convertapi;
 
-import com.convertapi.client.model.ConversionResponseFile;
+import io.github.kmozsi.convertapi.model.ConversionResponseFile;
 
 import java.io.IOException;
 import java.io.InputStream;

@@ -1,7 +1,7 @@
-import com.convertapi.Config;
-import com.convertapi.ConversionResult;
-import com.convertapi.ConvertApi;
-import com.convertapi.Param;
+import io.github.kmozsi.convertapi.Config;
+import io.github.kmozsi.convertapi.ConversionResult;
+import io.github.kmozsi.convertapi.ConvertApi;
+import io.github.kmozsi.convertapi.Param;
 
 import java.io.IOException;
 import java.nio.file.Path;

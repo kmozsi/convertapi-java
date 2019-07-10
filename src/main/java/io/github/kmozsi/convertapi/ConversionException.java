@@ -1,4 +1,4 @@
-package com.convertapi.client;
+package io.github.kmozsi.convertapi;
 
 class ConversionException extends RuntimeException {
     private final int httpStatusCode;

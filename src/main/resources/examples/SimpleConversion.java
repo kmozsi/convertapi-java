@@ -1,6 +1,6 @@
-package com.convertapi.examples;
+package io.github.kmozsi.convertapi.examples;
 
-import com.convertapi.ConvertApi;
+import io.github.kmozsi.convertapi.ConvertApi;
 
 import static java.lang.System.getenv;
 

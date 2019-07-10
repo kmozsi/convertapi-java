@@ -1,7 +1,7 @@
-package com.convertapi.client;
+package io.github.kmozsi.convertapi;
 
-import com.convertapi.client.model.ConversionResponse;
-import com.convertapi.client.model.User;
+import io.github.kmozsi.convertapi.model.ConversionResponse;
+import io.github.kmozsi.convertapi.model.User;
 import com.google.gson.Gson;
 import okhttp3.HttpUrl;
 import okhttp3.MultipartBody;

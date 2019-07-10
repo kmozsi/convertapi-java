@@ -45,9 +45,9 @@
     </developers>
 
     <scm>
-        <connection>scm:git:git://github.com/ConvertAPI/convertapi-java.git</connection>
-        <developerConnection>scm:git:git@github.com:ConvertAPI/convertapi-java.git</developerConnection>
-        <url>https://github.com/ConvertAPI/convertapi-java</url>
+        <connection>scm:git:git://github.com/kmozsi/convertapi-java.git</connection>
+        <developerConnection>scm:git:git@github.com:kmozsi/convertapi-java.git</developerConnection>
+        <url>https://github.com/kmozsi/convertapi-java/tree/feature/maven</url>
         <tag>HEAD</tag>
     </scm>
 

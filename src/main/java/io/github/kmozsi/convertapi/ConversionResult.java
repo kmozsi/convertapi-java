@@ -3,6 +3,7 @@ package io.github.kmozsi.convertapi;
 import io.github.kmozsi.convertapi.model.ConversionResponse;
 import io.github.kmozsi.convertapi.model.ConversionResponseFile;
 
+import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
@@ -27,7 +28,7 @@ public class ConversionResult {
 
     public List<String> urls() {
         @SuppressWarnings("unchecked") List<String> valueList = new ArrayList();
-        for (ConversionResponseFile file : response.Files) valueList.add(file.Url);
+        for (ConversionResponseFile file: response.Files) valueList.add(file.Url);
         return valueList;
     }
 
@@ -41,14 +42,17 @@ public class ConversionResult {
         return new ConversionResultFile(response.Files[index]);
     }
 
+    public CompletableFuture<InputStream> asStream() {
+        return getFile(0).asStream();
+    }
+
     public CompletableFuture<Path> saveFile(Path file) {
         return getFile(0).saveFile(file);
     }
 
     @SuppressWarnings("WeakerAccess")
     public List<CompletableFuture<Path>> saveFiles(Path directory) {
-        if (!Files.isDirectory(directory))
-            throw new RuntimeException("Directory expected, but received: " + directory.toString());
+        if (!Files.isDirectory(directory)) throw new RuntimeException("Directory expected, but received: " + directory.toString());
         List<CompletableFuture<Path>> paths = new ArrayList<>();
         for (int i = 0; i < response.Files.length; i++) {
             paths.add(getFile(i).saveFile(directory));

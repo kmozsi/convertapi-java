@@ -1,11 +1,11 @@
 package com.convertapi.examples;
 
-import com.convertapi.client.Config;
-import com.convertapi.client.ConversionResult;
-import com.convertapi.client.ConvertApi;
-import com.convertapi.client.Param;
-import java.io.File;
+import io.github.kmozsi.convertapi.Config;
+import io.github.kmozsi.convertapi.ConversionResult;
+import io.github.kmozsi.convertapi.ConvertApi;
+import io.github.kmozsi.convertapi.Param;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -22,13 +22,13 @@ import static java.lang.System.getenv;
 
 public class CreatePdfThumbnail {
     public static void main(String[] args) throws IOException, ExecutionException, InterruptedException {
-        Config.setDefaultSecret(getenv("CONVERTAPI_SECRET"));    //Get your secret at https://www.convertapi.com/a
+         Config.setDefaultSecret(getenv("CONVERTAPI_SECRET"));    //Get your secret at https://www.convertapi.com/a
         Path tempDir = Paths.get(System.getProperty("java.io.tmpdir"));
 
         System.out.println("Creating PDF thumbnail");
 
         CompletableFuture<ConversionResult> pdfFirstPageResult = ConvertApi.convert("pdf", "extract",
-                new Param("file", new File(AlternativeConverter.class.getClassLoader().getResource("test.docx").getFile()).toPath()),
+                new Param("file",  new File(AlternativeConverter.class.getClassLoader().getResource("test.pdf").getFile()).toPath()),
                 new Param("pagerange", "1")
         );
 

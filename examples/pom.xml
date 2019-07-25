@@ -13,18 +13,61 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.convertapi.client</groupId>
+            <groupId>io.github.kmozsi</groupId>
             <artifactId>convertapi</artifactId>
-            <version>2.0</version>
+            <version>24.0</version>
         </dependency>
     </dependencies>
     
+    
+  
     <build>     
         <resources>
             <resource>
                 <directory>src/main/resources</directory>
+                <includes>
+                    <include>test.docx</include>
+                    <include>test.pdf</include>
+                </includes>
             </resource>
         </resources>
+        
+        <plugins>
+            
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>1.6.0</version>
+            
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+                            <addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
+                        </manifest>
+                    </archive>
+                </configuration>
+            </plugin>
+            
+            <!--<plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.0.2</version>
+
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+                            <addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
+                        </manifest>
+                    </archive>
+                </configuration>
+   
+            </plugin> -->
+            
+        </plugins>       
+        
     </build>
+    
 
 </project>

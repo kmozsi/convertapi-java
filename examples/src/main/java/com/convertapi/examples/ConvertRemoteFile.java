@@ -1,9 +1,9 @@
 package com.convertapi.examples;
 
-import com.convertapi.client.Config;
-import com.convertapi.client.ConversionResult;
-import com.convertapi.client.ConvertApi;
-import com.convertapi.client.Param;
+import io.github.kmozsi.convertapi.Config;
+import io.github.kmozsi.convertapi.ConversionResult;
+import io.github.kmozsi.convertapi.ConvertApi;
+import io.github.kmozsi.convertapi.Param;
 
 import java.io.IOException;
 import java.nio.file.Path;

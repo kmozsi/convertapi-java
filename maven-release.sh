@@ -25,7 +25,7 @@ echo "Cleaning..."
 mvn clean
 
 echo "Preparing release..."
-mvn release:prepare -DreleaseVersion=${VERSION} -DdevelopmentVersion=${NEXT_VERSION} -Dtag=v${VERSION} -Dresume=false
+mvn release:prepare -DreleaseVersion=${VERSION} -DdevelopmentVersion=${NEXT_VERSION} -Dtag=v${VERSION} -Dresume=false -Darguments=-Dgpg.passphrase=${PASSPHRASE}
 
 echo "Performing release..."
 mvn release:perform

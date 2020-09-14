@@ -2,14 +2,16 @@ FROM openjdk:8-jdk-alpine
 
 ENV VERSION=
 ENV NEXT_VERSION=
+ENV PASSPHRASE=
 
 VOLUME /tmp
 
 COPY maven-release.sh /maven-release.sh
+COPY secret.key /secret.key
 RUN ["chmod", "+x", "/maven-release.sh"]
 
 # Install Maven and Git
-RUN apk add --no-cache curl tar bash git
+RUN apk add --no-cache curl tar bash git gnupg
 ARG MAVEN_VERSION=3.3.9
 ARG USER_HOME_DIR="/root"
 RUN mkdir -p /usr/share/maven && \
@@ -20,5 +22,14 @@ ENV MAVEN_CONFIG "$USER_HOME_DIR/.m2"
 # speed up Maven JVM a bit
 ENV MAVEN_OPTS="-XX:+TieredCompilation -XX:TieredStopAtLevel=1"
 
+COPY settings.xml "$MAVEN_CONFIG/settings.xml"
+RUN git config --global user.email "mozsik0@gmail.com" && \
+ 	git config --global user.name "Krisztian Mozsi"
+RUN gpg --keyserver hkp://hkps.pool.sks-keyservers.net --recv-keys C7C1DAB878F4E852C0BCC101CD80AC86A796CEDA && \
+	gpg --allow-secret-key-import --batch --import secret.key
 RUN mkdir /tmp/convertapi
+RUN export GPG_TTY=/dev/console
+RUN export GPG_OPTS='--pinentry-mode loopback'
+RUN echo "pinentry-mode loopback" > ~/.gnupg/gpg.conf
+
 ENTRYPOINT /maven-release.sh

@@ -1,6 +1,7 @@
 #!/bin/sh
 
 branch_to_release="master"
+set -e
 
 echo "Cloning convertapi-java..."
 git clone https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/kmozsi/convertapi-java.git
@@ -11,7 +12,7 @@ git fetch
 git checkout $branch_to_release
 
 echo "Preparing release..."
-mvn release:prepare -DreleaseVersion=${VERSION} -DdevelopmentVersion=${NEXT_VERSION} -Dtag=v${VERSION} -Dresume=false -Darguments=-Dgpg.passphrase=${PASSPHRASE}
+mvn release:prepare -DreleaseVersion=${VERSION} -DdevelopmentVersion=${NEXT_VERSION} -Dtag=v${VERSION} -Dresume=false -Darguments=-Dgpg.passphrase=${GPG_PASSPHRASE}
 
 echo "Performing release..."
 mvn release:perform

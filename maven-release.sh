@@ -3,8 +3,13 @@
 branch_to_release="master"
 set -e
 
+echo "Set private key..."
+cp -vr /gpg ~/.gnupg
+echo "pinentry-mode loopback" > ~/.gnupg/gpg.conf
+cp -vpr /maven ~/.m2
+
 echo "Cloning convertapi-java..."
-git clone https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/kmozsi/convertapi-java.git
+git clone https://${GIT_USERNAME}:${GIT_SECRET}@github.com/kmozsi/convertapi-java.git
 cd convertapi-java
 
 echo "Switching to the release branch..."

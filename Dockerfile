@@ -4,7 +4,7 @@ ENV VERSION=
 ENV NEXT_VERSION=
 ENV GPG_PASSPHRASE=
 ENV GIT_USERNAME=
-ENV GIT_PASSWORD=
+ENV GIT_SECRET=
 ARG GIT_EMAIL=
 ARG FULL_NAME=
 
@@ -15,10 +15,9 @@ ENV MAVEN_CONFIG "$USER_HOME_DIR/.m2"
 # speed up Maven JVM a bit
 ENV MAVEN_OPTS="-XX:+TieredCompilation -XX:TieredStopAtLevel=1"
 
-VOLUME /tmp
+VOLUME /gpg
+VOLUME /maven
 
-COPY secret.key /secret.key
-COPY settings.xml "$MAVEN_CONFIG/settings.xml"
 COPY maven-release.sh /maven-release.sh
 
 # Install Maven, Git and gpg
@@ -30,10 +29,8 @@ RUN git config --global user.email ${GIT_EMAIL} && \
  	git config --global user.name ${FULL_NAME}
 
 # Configure gpg
-RUN gpg --allow-secret-key-import --batch --import secret.key
 RUN export GPG_TTY=/dev/console
 RUN export GPG_OPTS='--pinentry-mode loopback'
-RUN echo "pinentry-mode loopback" > ~/.gnupg/gpg.conf
 
 RUN ["chmod", "+x", "/maven-release.sh"]
 ENTRYPOINT /maven-release.sh

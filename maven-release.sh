@@ -27,3 +27,7 @@ git push --tags
 
 echo "Push release commits..."
 git push
+
+echo "-------------------------------------------------------------"
+echo "SUCCESSFULLY released ${VERSION} to Maven Central repository."
+echo "-------------------------------------------------------------"
